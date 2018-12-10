@@ -18,6 +18,7 @@ class ArticleController extends Controller
     public function index()
     {
         header('Access-Control-Allow-Origin: *');
+        
         $article= Article::paginate(10);
         $rr = ArticleResource::collection($article);
         return ArticleResource::collection($article);
@@ -44,6 +45,7 @@ class ArticleController extends Controller
     {
         //
          header('Access-Control-Allow-Origin: *');
+
         $article = $request->isMethod('put') ? Article::findOrFail($request->article_id) : new Article;
         
         $article->id =$request->input('article_id');
